@@ -23,17 +23,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install marimo dash pandas plotly
+          python -m pip install marimo dash pandas plotly
+          python -c "import dash; print('dash ok')"
 
       # 4. Convert standard Python script to Marimo notebook
       - name: Convert script to notebook
-        run: marimo convert DV0101EN-Final-Assign-Part-2-Questions.py -o notebook.py
+        run: python -m marimo convert DV0101EN-Final-Assign-Part-2-Questions.py -o notebook.py
 
       # 5. Export Marimo notebook to static HTML (WASM)
       - name: Export Marimo notebook
         run: |
           mkdir -p output_dir
-          marimo export html-wasm notebook.py -o output_dir/index.html --mode run
+          python -m marimo export html-wasm notebook.py -o output_dir/index.html --mode run
 
       # 6. Add .nojekyll to prevent GitHub Pages interference
       - name: Add .nojekyll
