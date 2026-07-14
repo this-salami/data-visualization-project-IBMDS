@@ -1,0 +1,66 @@
+name: Deploy Marimo App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  build:
+    name: Build & Export
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout repository code
+      - uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 3. Install project dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install marimo dash pandas plotly
+
+      # 4. Convert standard Python script to Marimo notebook
+      - name: Convert script to notebook
+        run: marimo convert DV0101EN-Final-Assign-Part-2-Questions.py -o notebook.py
+
+      # 5. Export Marimo notebook to static HTML (WASM)
+      - name: Export Marimo notebook
+        run: |
+          mkdir -p output_dir
+          marimo export html-wasm notebook.py -o output_dir/index.html --mode run
+
+      # 6. Add .nojekyll to prevent GitHub Pages interference
+      - name: Add .nojekyll
+        run: touch output_dir/.nojekyll
+
+      # 7. Upload the exported HTML as an artifact
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output_dir
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      # 8. Deploy the artifact to GitHub Pages
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages   
