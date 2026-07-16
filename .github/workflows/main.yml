@@ -29,7 +29,7 @@ jobs:
       - name: Export Marimo notebook
         run: |
           mkdir -p output_dir
-          python -m marimo export html-wasm marimo/notebook.py -o output_dir/index.html --css index.css --mode run
+          python -m marimo export html-wasm marimo/notebook.py -o output_dir/index.html --mode run
 
       # 5. Add .nojekyll to prevent GitHub Pages interference
       - name: Add .nojekyll

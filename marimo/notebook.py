@@ -4,7 +4,6 @@ __generated_with = "0.23.14"
 app = marimo.App(
     width="full",
     app_title="Data Visualization - IBMDS",
-    css_file="index.css",
 )
 
 
@@ -28,6 +27,32 @@ def _(deps_ready):
     import plotly.express as px
     return mo, pd, px
 
+@app.cell
+def _(mo):
+    mo.Html("""<style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: fit-content;
+
+            overflow-y: hidden;
+            overflow-x: scroll;
+        }
+
+        #root {
+            overflow: visible;
+        }
+
+        #root > .contents > div {
+            min-width: 1200px;
+        }
+            
+        #App {
+            overflow: scroll;
+            width: 100%;
+        }
+    </style>""")
 
 @app.cell
 def _(pd):
