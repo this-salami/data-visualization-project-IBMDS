@@ -29,7 +29,7 @@ jobs:
       - name: Export Marimo notebook
         run: |
           mkdir -p output_dir
-          python -m marimo export html-wasm marimo/notebook.py -o output_dir/index.html --mode run
+          python -m marimo export html-wasm marimo/notebook.py -o output_dir/index.html --css index.css --mode run
 
       # 5. Add .nojekyll to prevent GitHub Pages interference
       - name: Add .nojekyll
@@ -54,7 +54,7 @@ jobs:
       id-token: write
 
     steps:
-      # 8. Deploy the artifact to GitHub Pages
+      # 7. Deploy the artifact to GitHub Pages
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
