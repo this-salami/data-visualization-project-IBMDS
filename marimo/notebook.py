@@ -5,7 +5,20 @@ app = marimo.App(width="medium")
 
 
 @app.cell
-def _():
+async def _():
+    import sys
+
+    deps_ready = True
+    if sys.platform == "emscripten":
+        import micropip
+
+        await micropip.install(["plotly"])
+
+    return (deps_ready,)
+
+
+@app.cell
+def _(deps_ready):
     import marimo as mo
     import pandas as pd
     import plotly.express as px
