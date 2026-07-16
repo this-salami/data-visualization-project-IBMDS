@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.23.14"
-app = marimo.App(width="medium")
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -125,7 +125,7 @@ def _(data, px, report_type, year, pd):
 
         mas_total = data.groupby("Month")["Automobile_Sales"].sum().reset_index().rename(columns={"Automobile_Sales": "Total_Automobile_Sales"})
         mas_this = yearly_data.groupby("Month")["Automobile_Sales"].sum().reset_index().rename(columns={"Automobile_Sales": f"{selected_year}_Automobile_Sales"})
-        mas = pd.merge(mas_total, mas_this, on="Month")
+        mas = pd.merge(mas_total, mas_this, on="Month").set_index("Month").reindex(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]).reset_index()
         y_chart2 = px.line(
             mas,
             x="Month",

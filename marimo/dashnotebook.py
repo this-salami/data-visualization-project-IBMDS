@@ -176,12 +176,14 @@ def _():
             # Plot 2 Total Monthly Automobile sales using line chart.
             # grouping data for plotting.
     	    # Hint:Use the columns Month and Automobile_Sales.
-            mas = data.groupby('Month')['Automobile_Sales'].sum().reset_index()
+            mas_total = data.groupby('Month')['Automobile_Sales'].sum().reset_index().rename(columns={'Automobile_Sales': 'Total_Automobile_Sales'})
+            mas_this = yearly_data.groupby('Month')['Automobile_Sales'].sum().reset_index().rename(columns={'Automobile_Sales': f'{selected_year}_Automobile_Sales'})
+            mas = pd.merge(mas_total, mas_this, on='Month').set_index('Month').reindex(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']).reset_index()
             Y_chart2 = dcc.Graph(
                 figure=px.line(
                     mas,
                     x='Month',
-                    y='Automobile_Sales',
+                    y=['Total_Automobile_Sales', f'{selected_year}_Automobile_Sales'],
                     title='Total Monthly Automobile Sales'
                 )
             )
