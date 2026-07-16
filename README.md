@@ -14,7 +14,7 @@ The dashboard uses historical automobile sales data to visualize trends in sales
 
 - Interactive **Dash web application** (Download, `DV0101EN-Final-Assign-Part-2-Questions.py`)
   - Marimo web demo, same format as the Dash app (Hosted on GitHub Pages): [Marimo Dashboard](https://this-salami.github.io/data-visualization-project-IBMDS/)
-- Jupyter Notebook for data exploration, analysis, and visualization (`DV0101EN-Final-Assign-Part1-v1.jupyterlite.ipynb`)
+- Jupyter Notebook for data exploration, analysis, and visualization (`DV0101EN-Final-Assign-Part1-v1.jupyterlite.ipynb`, [previewable in browser](DV0101EN-Final-Assign-Part1-v1.jupyterlite.ipynb))
 - Dropdown-based filtering for report type and year
 - Visual analysis of:
   - Average automobile sales during recession periods
@@ -70,7 +70,18 @@ When **Yearly Statistics** is selected and a year is chosen, the dashboard displ
 
 ## Dashboard (Dash) Images:
 
-(TODO)
+Images (static screenshots):
+![Dashboard Screenshot 1](imgs/YearlySales.png)
+![Dashboard Screenshot 2](imgs/RecessionSales.png)
+![Dashboard Screenshot 3](imgs/RecessionAdExpenditure.png)
+
+GIF (animated demo):
+![Dashboard GIF](imgs/DashboardDemo.gif)
+
+## Jupyter Notebook Images:
+
+Map (Hidden in browser view): 
+![Jupyter Notebook Map](imgs/JupyterMap.gif)
 
 ## Installation
 
@@ -109,7 +120,6 @@ This project demonstrates how to:
 
 ## Possible Improvements
 
-- Add dashboard images and screenshots to the README for better visualization
 - Add custom styling for a more polished UI
 - Improve responsiveness for smaller screens
 - Add data validation and loading indicators
