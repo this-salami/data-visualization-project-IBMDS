@@ -1,7 +1,11 @@
 import marimo
 
 __generated_with = "0.23.14"
-app = marimo.App(width="full")
+app = marimo.App(
+    width="full",
+    app_title="Data Visualization - IBMDS",
+    css_file="index.css",
+)
 
 
 @app.cell
