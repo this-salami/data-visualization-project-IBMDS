@@ -12,7 +12,9 @@ The dashboard uses historical automobile sales data to visualize trends in sales
 
 ## Features
 
-- Interactive **Dash web application**
+- Interactive **Dash web application** (Download, `DV0101EN-Final-Assign-Part-2-Questions.py`)
+  - Marimo web demo, same format as the Dash app (Hosted on GitHub Pages): [Marimo Dashboard](https://this-salami.github.io/data-visualization-project-IBMDS/)
+- Jupyter Notebook for data exploration, analysis, and visualization (`DV0101EN-Final-Assign-Part1-v1.jupyterlite.ipynb`)
 - Dropdown-based filtering for report type and year
 - Visual analysis of:
   - Average automobile sales during recession periods
@@ -25,10 +27,13 @@ The dashboard uses historical automobile sales data to visualize trends in sales
 ## Project Structure
 
 - `DV0101EN-Final-Assign-Part1-v1.jupyterlite.ipynb`  
-  Jupyter Notebook version of the assignment/project work
+  Jupyter Notebook version of the assignment/project work, covering data exploration, analysis, and visualization. 
 
 - `DV0101EN-Final-Assign-Part-2-Questions.py`  
   Dash app script containing the interactive dashboard
+
+- `marimo/notebook.py`  
+  Marimo notebook version of the dashboard for web deployment utilizing Marimo's export capabilities and GitHub Actions for continuous deployment
 
 - `README.md`  
   Project documentation
@@ -40,6 +45,8 @@ The dashboard uses historical automobile sales data to visualize trends in sales
 - Plotly
 - Dash
 - Jupyter Notebook
+- Marimo (for web deployment)
+- GitHub Actions (for CI/CD and deployment)
 
 ## Dataset
 
@@ -60,6 +67,10 @@ When **Yearly Statistics** is selected and a year is chosen, the dashboard displ
 2. Total monthly automobile sales
 3. Average vehicles sold by vehicle type in the selected year
 4. Total advertising expenditure by vehicle type in the selected year
+
+## Dashboard (Dash) Images:
+
+(TODO)
 
 ## Installation
 
@@ -98,6 +109,7 @@ This project demonstrates how to:
 
 ## Possible Improvements
 
+- Add dashboard images and screenshots to the README for better visualization
 - Add custom styling for a more polished UI
 - Improve responsiveness for smaller screens
 - Add data validation and loading indicators
